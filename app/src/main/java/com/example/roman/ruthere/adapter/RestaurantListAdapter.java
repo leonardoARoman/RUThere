@@ -1,6 +1,5 @@
 package com.example.roman.ruthere.adapter;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,11 +9,12 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.roman.ruthere.MainActivity;
+import com.example.roman.ruthere.MapsActivity;
 import com.example.roman.ruthere.R;
 import com.example.roman.ruthere.RestaurantActivity;
 import com.example.roman.ruthere.pojo.Places;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class RestaurantListAdapter extends BaseAdapter {
 
@@ -61,11 +61,15 @@ public class RestaurantListAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 /*
-                // GO TO A MAP ACTIVITY AND DISPLAY ROUTE
-                Intent intent = new Intent(context,MapsActivity.class);
-                intent.putExtra("restaurant",list.get(position));
-                context.startActivity(intent);
+                    GO TO A MAP ACTIVITY AND DISPLAY ROUTE
                 */
+                Intent intent =new Intent(mainActivity.getBaseContext(),MapsActivity.class);
+                ArrayList<Double> latLng=new ArrayList<>();
+                latLng.add(places.getPlaces().get(position).getGeometry().getLocation().getLat());
+                latLng.add(places.getPlaces().get(position).getGeometry().getLocation().getLng());
+                intent.putExtra("location",latLng);
+                mainActivity.startActivity(intent);
+
             }
         });
         mRestaurant.setText(places.getPlaces().get(position).getName());
