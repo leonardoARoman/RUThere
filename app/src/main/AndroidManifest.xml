@@ -21,7 +21,7 @@
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="API-Key" />
+            android:value="YOUR_API" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -33,7 +33,8 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".RestaurantActivity"></activity>
+        <activity android:name=".RestaurantActivity" />
+        <activity android:name=".YelpRecomendationActivity"></activity>
     </application>
 
 </manifest>
